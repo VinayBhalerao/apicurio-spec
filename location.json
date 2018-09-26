@@ -1,0 +1,122 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Locations-User123",
+    "description" : "Locations API",
+    "version" : "1.0.0"
+  },
+  "paths" : {
+    "/locations" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "get all locations",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/location"
+                  }
+                },
+                "examples" : {
+                  "all" : {
+                    "value" : "[\n    {\n        \"id\": 1,\n        \"name\": \"International Inc Corporate Office\",\n        \"location\": {\n            \"lat\": 51.5013673,\n            \"lng\": -0.1440787\n        },\n        \"type\": \"headquarter\",\n        \"status\": \"1\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"International Inc North America\",\n        \"location\": {\n            \"lat\": 40.6976701,\n            \"lng\": -74.259876\n        },\n        \"type\": \"office\",\n        \"status\": \"1\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"International Inc France\",\n        \"location\": {\n            \"lat\": 48.859,\n            \"lng\": 2.2069746\n        },\n        \"type\": \"office\",\n        \"status\": \"1\"\n    }\n]"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "requestBody" : { },
+        "responses" : {
+          "200" : {
+            "description" : "add location",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/location"
+                },
+                "examples" : {
+                  "location" : {
+                    "description" : "add location",
+                    "value" : "{\n    \"id\": 5,\n    \"name\": \"International Inc Canada\",\n    \"location\": {\n        \"lat\": 43.6532,\n        \"lng\": 79.3832\n    },\n    \"type\": \"headquarter\",\n    \"status\": \"1\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations/{id}" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "get locations id",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/location"
+                },
+                "examples" : {
+                  "locationID" : {
+                    "value" : "{\n    \"id\": 1,\n    \"name\": \"International Inc Corporate Office\",\n    \"location\": {\n        \"lat\": 51.5013673,\n        \"lng\": -0.1440787\n    },\n    \"type\": \"headquarter\",\n    \"status\": \"1\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "schema" : {
+          "type" : "integer"
+        }
+      } ]
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "location" : {
+        "title" : "Root Type for location",
+        "description" : "The root of the location type's schema.",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "location" : {
+            "type" : "object",
+            "properties" : {
+              "lat" : {
+                "format" : "double",
+                "type" : "number"
+              },
+              "lng" : {
+                "format" : "double",
+                "type" : "number"
+              }
+            }
+          },
+          "type" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "string"
+          }
+        },
+        "example" : "{\n    \"id\": 1,\n    \"name\": \"International Inc Corporate Office\",\n    \"location\": {\n        \"lat\": 51.5013673,\n        \"lng\": -0.1440787\n    },\n    \"type\": \"headquarter\",\n    \"status\": \"1\"\n}"
+      }
+    }
+  }
+}
