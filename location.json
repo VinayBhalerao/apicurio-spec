@@ -1,27 +1,32 @@
 {
-  "openapi" : "3.0.1",
-  "info" : {
-    "title" : "Locations-User123",
-    "description" : "Locations API",
-    "version" : "1.0.0"
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Locations",
+    "description": "Locations API",
+    "version": "1.0.0"
   },
-  "paths" : {
-    "/locations" : {
-      "get" : {
-        "responses" : {
-          "200" : {
-            "description" : "get all locations",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/location"
+  "paths": {
+    "/locations": {
+      "summary": "Path used to manage the list of locations.",
+      "description": "The REST endpoint/path used to list and create zero or more `location` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.",
+      "get": {
+        "summary": "List All locations",
+        "description": "Gets a list of all `location` entities.",
+        "operationId": "getlocations",
+        "responses": {
+          "200": {
+            "description": "Successful response - returns an array of `location` entities.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/location"
                   }
                 },
-                "examples" : {
-                  "all" : {
-                    "value" : "[\n    {\n        \"id\": 1,\n        \"name\": \"International Inc Corporate Office\",\n        \"location\": {\n            \"lat\": 51.5013673,\n            \"lng\": -0.1440787\n        },\n        \"type\": \"headquarter\",\n        \"status\": \"1\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"International Inc North America\",\n        \"location\": {\n            \"lat\": 40.6976701,\n            \"lng\": -74.259876\n        },\n        \"type\": \"office\",\n        \"status\": \"1\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"International Inc France\",\n        \"location\": {\n            \"lat\": 48.859,\n            \"lng\": 2.2069746\n        },\n        \"type\": \"office\",\n        \"status\": \"1\"\n    }\n]"
+                "examples": {
+                  "getAllLocations": {
+                    "value": "[\n  {\n    \"id\": 1,\n    \"name\": \"Kamarhati\",\n    \"type\": \"Regional Branch\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"-28.32555\",\n      \"lng\": \"-5.91531\"\n    }\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Otranto\",\n    \"type\": \"Local Office\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"-8.01254\",\n      \"lng\": \"101.47364\"\n    }\n  },\n  {\n    \"id\": 3,\n    \"name\": \"Millesimo\",\n    \"type\": \"Headquarter\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"78.88435\",\n      \"lng\": \"99.05294\"\n    }\n  }\n]"
                   }
                 }
               }
@@ -29,21 +34,33 @@
           }
         }
       },
-      "post" : {
-        "requestBody" : { },
-        "responses" : {
-          "200" : {
-            "description" : "add location",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/location"
-                },
-                "examples" : {
-                  "location" : {
-                    "description" : "add location",
-                    "value" : "{\n    \"id\": 5,\n    \"name\": \"International Inc Canada\",\n    \"location\": {\n        \"lat\": 43.6532,\n        \"lng\": 79.3832\n    },\n    \"type\": \"headquarter\",\n    \"status\": \"1\"\n}"
-                  }
+      "post": {
+        "summary": "Create a location",
+        "description": "Creates a new instance of a `location`.",
+        "operationId": "createlocation",
+        "requestBody": {
+          "description": "A new `location` to be created.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/location"
+              },
+              "examples": {
+                "createLocation": {
+                  "value": "{\n  \"id\": 101,\n  \"name\": \"International Inc Canada\",\n  \"location\": {\n    \"lat\": 43.6532,\n    \"lng\": 79.3832\n  },\n  \"type\": \"Headquarter\",\n  \"status\": \"1\"\n}\n"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/location"
                 }
               }
             }
@@ -51,19 +68,19 @@
         }
       }
     },
-    "/locations/{id}" : {
-      "get" : {
-        "responses" : {
-          "200" : {
-            "description" : "get locations id",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/location"
+    "/location/phone/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/location"
                 },
-                "examples" : {
-                  "locationID" : {
-                    "value" : "{\n    \"id\": 1,\n    \"name\": \"International Inc Corporate Office\",\n    \"location\": {\n        \"lat\": 51.5013673,\n        \"lng\": -0.1440787\n    },\n    \"type\": \"headquarter\",\n    \"status\": \"1\"\n}"
+                "examples": {
+                  "geLocationPhoneId": {
+                    "value": "{\n  \"id\" : 4,\n  \"operatingHour\" : \"8:00 AM - 5:00 PM\",\n  \"owner\" : \"XXX XXX\",\n  \"phone\" : \"345-678-9567\"\n}"
                   }
                 }
               }
@@ -71,51 +88,85 @@
           }
         }
       },
-      "parameters" : [ {
-        "name" : "id",
-        "in" : "path",
-        "required" : true,
-        "schema" : {
-          "type" : "integer"
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "format": "int32",
+            "type": "integer"
+          }
         }
-      } ]
-    }
-  },
-  "components" : {
-    "schemas" : {
-      "location" : {
-        "title" : "Root Type for location",
-        "description" : "The root of the location type's schema.",
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "format" : "int32",
-            "type" : "integer"
-          },
-          "name" : {
-            "type" : "string"
-          },
-          "location" : {
-            "type" : "object",
-            "properties" : {
-              "lat" : {
-                "format" : "double",
-                "type" : "number"
-              },
-              "lng" : {
-                "format" : "double",
-                "type" : "number"
+      ]
+    },
+    "/locations/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Successful response - returns the `location` entity.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/location"
+                },
+                "examples": {
+                  "getLocationID": {
+                    "value": "{\n  \"id\": 1,\n  \"name\": \"Kamarhati\",\n  \"type\": \"Regional Branch\",\n  \"status\": \"1\",\n  \"location\": {\n    \"lat\": \"-28.32555\",\n    \"lng\": \"-5.91531\"\n  }\n}"
+                  }
+                }
               }
             }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "location": {
+        "title": "Root Type for location",
+        "description": "The root of the location type's schema.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
           },
-          "type" : {
-            "type" : "string"
+          "name": {
+            "type": "string"
           },
-          "status" : {
-            "type" : "string"
+          "type": {
+            "type": "string"
+          },
+          "status": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "string"
+              },
+              "lng": {
+                "type": "string"
+              }
+            }
           }
         },
-        "example" : "{\n    \"id\": 1,\n    \"name\": \"International Inc Corporate Office\",\n    \"location\": {\n        \"lat\": 51.5013673,\n        \"lng\": -0.1440787\n    },\n    \"type\": \"headquarter\",\n    \"status\": \"1\"\n}"
+        "example": "{\n  \"id\": 1,\n  \"name\": \"Kamarhati\",\n  \"type\": \"Regional Branch\",\n  \"status\": \"1\",\n  \"location\": {\n    \"lat\": \"-28.32555\",\n    \"lng\": \"-5.91531\"\n  }\n}"
       }
     }
   }
