@@ -1,172 +1,81 @@
 {
-  "openapi": "3.0.1",
+  "swagger": "2.0",
   "info": {
     "title": "Locations",
-    "description": "Locations API",
+    "description": "Location API",
     "version": "1.0.0"
   },
   "paths": {
     "/locations": {
-      "summary": "Path used to manage the list of locations.",
-      "description": "The REST endpoint/path used to list and create zero or more `location` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.",
       "get": {
-        "summary": "List All locations",
-        "description": "Gets a list of all `location` entities.",
-        "operationId": "getlocations",
         "responses": {
           "200": {
-            "description": "Successful response - returns an array of `location` entities.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/location"
-                  }
-                },
-                "examples": {
-                  "getAllLocations": {
-                    "value": "[\n  {\n    \"id\": 1,\n    \"name\": \"Kamarhati\",\n    \"type\": \"Regional Branch\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"-28.32555\",\n      \"lng\": \"-5.91531\"\n    }\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Otranto\",\n    \"type\": \"Local Office\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"-8.01254\",\n      \"lng\": \"101.47364\"\n    }\n  },\n  {\n    \"id\": 3,\n    \"name\": \"Millesimo\",\n    \"type\": \"Headquarter\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"78.88435\",\n      \"lng\": \"99.05294\"\n    }\n  }\n]"
-                  }
-                }
+            "description": "successfully created",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/location"
               }
+            },
+            "examples": {
+              "application/json": "[\n  {\n    \"id\": 1,\n    \"name\": \"Kamarhati\",\n    \"type\": \"Regional Branch\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"-28.32555\",\n      \"lng\": \"-5.91531\"\n    }\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Otranto\",\n    \"type\": \"Local Office\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"-8.01254\",\n      \"lng\": \"101.47364\"\n    }\n  },\n  {\n    \"id\": 3,\n    \"name\": \"Millesimo\",\n    \"type\": \"Headquarter\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"78.88435\",\n      \"lng\": \"99.05294\"\n    }\n  }\n]"
             }
           }
         }
-      },
-      "post": {
-        "summary": "Create a location",
-        "description": "Creates a new instance of a `location`.",
-        "operationId": "createlocation",
-        "requestBody": {
-          "description": "A new `location` to be created.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/location"
-              },
-              "examples": {
-                "createLocation": {
-                  "value": "{\n  \"id\": 101,\n  \"name\": \"International Inc Canada\",\n  \"location\": {\n    \"lat\": 43.6532,\n    \"lng\": 79.3832\n  },\n  \"type\": \"Headquarter\",\n  \"status\": \"1\"\n}\n"
-                }
-              }
-            }
-          },
-          "required": true
-        },
+      }
+    },
+    "/locations/:id": {
+      "get": {
         "responses": {
-          "201": {
-            "description": "Successful created",
-            "content": {
+          "200": {
+            "description": "Successfully created",
+            "examples": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/location"
+                "id": 1,
+                "name": "Kamarhati",
+                "type": "Regional Branch",
+                "status": "1",
+                "location": {
+                  "lat": "-28.32555",
+                  "lng": "-5.91531"
                 }
               }
             }
           }
         }
       }
-    },
-    "/location/phone/{id}": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/location"
-                },
-                "examples": {
-                  "geLocationPhoneId": {
-                    "value": "{\n  \"id\" : 4,\n  \"operatingHour\" : \"8:00 AM - 5:00 PM\",\n  \"owner\" : \"XXX XXX\",\n  \"phone\" : \"345-678-9567\"\n}"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "format": "int32",
-            "type": "integer"
-          }
-        }
-      ]
-    },
-    "/locations/{id}": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Successful response - returns the `location` entity.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/location"
-                },
-                "examples": {
-                  "getLocationID": {
-                    "value": "{\n  \"id\": 1,\n  \"name\": \"Kamarhati\",\n  \"type\": \"Regional Branch\",\n  \"status\": \"1\",\n  \"location\": {\n    \"lat\": \"-28.32555\",\n    \"lng\": \"-5.91531\"\n  }\n}"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "format": "int32",
-            "type": "integer"
-          }
-        }
-      ]
     }
   },
-  "components": {
-    "schemas": {
-      "location": {
-        "title": "Root Type for location",
-        "description": "The root of the location type's schema.",
-        "type": "object",
-        "properties": {
-          "id": {
-            "format": "int32",
-            "type": "integer"
-          },
-          "name": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "status": {
-            "format": "int32",
-            "type": "integer"
-          },
-          "location": {
-            "type": "object",
-            "properties": {
-              "lat": {
-                "type": "string"
-              },
-              "lng": {
-                "type": "string"
-              }
+  "definitions": {
+    "location": {
+      "title": "Root Type for location",
+      "description": "The root of the location type's schema.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "lat": {
+              "type": "string"
+            },
+            "lng": {
+              "type": "string"
             }
           }
-        },
-        "example": "{\n  \"id\": 1,\n  \"name\": \"Kamarhati\",\n  \"type\": \"Regional Branch\",\n  \"status\": \"1\",\n  \"location\": {\n    \"lat\": \"-28.32555\",\n    \"lng\": \"-5.91531\"\n  }\n}"
+        }
       }
     }
   }
