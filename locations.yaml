@@ -1,9 +1,13 @@
 ---
-swagger: 2.0
+swagger: "2.0"
 info:
-  title: Locations
-  description: Locations API
+  title: location2
+  description: locations api new
   version: 1.0.0
+consumes:
+- application/json
+produces:
+- application/json
 paths:
   /locations:
     get:
@@ -17,36 +21,36 @@ paths:
           examples:
             application/json: |-
               [
-                  {
-                      "id": 1,
-                      "name": "International Inc Corporate Office",
-                      "location": {
-                          "lat": 51.5013673,
-                          "lng": -0.1440787
-                      },
-                      "type": "headquarter",
-                      "status": "1"
-                  },
-                  {
-                      "id": 2,
-                      "name": "International Inc North America",
-                      "location": {
-                          "lat": 40.6976701,
-                          "lng": -74.259876
-                      },
-                      "type": "office",
-                      "status": "1"
-                  },
-                  {
-                      "id": 3,
-                      "name": "International Inc France",
-                      "location": {
-                          "lat": 48.859,
-                          "lng": 2.2069746
-                      },
-                      "type": "office",
-                      "status": "1"
+                {
+                  "id": 1,
+                  "name": "Kamarhati",
+                  "type": "Regional Branch",
+                  "status": "1",
+                  "location": {
+                    "lat": "-28.32555",
+                    "lng": "-5.91531"
                   }
+                },
+                {
+                  "id": 2,
+                  "name": "Otranto",
+                  "type": "Local Office",
+                  "status": "1",
+                  "location": {
+                    "lat": "-8.01254",
+                    "lng": "101.47364"
+                  }
+                },
+                {
+                  "id": 3,
+                  "name": "Millesimo",
+                  "type": "Headquarter",
+                  "status": "1",
+                  "location": {
+                    "lat": "78.88435",
+                    "lng": "99.05294"
+                  }
+                }
               ]
 definitions:
   location:
@@ -59,16 +63,26 @@ definitions:
         type: integer
       name:
         type: string
+      type:
+        type: string
+      status:
+        format: int32
+        type: integer
       location:
         type: object
         properties:
           lat:
-            format: double
-            type: number
+            type: string
           lng:
-            format: double
-            type: number
-      type:
-        type: string
-      status:
-        type: string
+            type: string
+    example: |-
+      {
+        "id": 1,
+        "name": "Kamarhati",
+        "type": "Regional Branch",
+        "status": "1",
+        "location": {
+          "lat": "-28.32555",
+          "lng": "-5.91531"
+        }
+      }
