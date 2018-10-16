@@ -1,8 +1,8 @@
 {
 	"variables": [],
 	"info": {
-		"name": "Locations API",
 		"_postman_id": "edb96410-8515-4e9c-a365-300a4a33e377",
+		"name": "Locations",
 		"description": "version=1.0 - This is a Location API description",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -12,7 +12,7 @@
 			"description": "Folder for locations",
 			"item": [
 				{
-					"name": "locations",
+					"name": "Retreive all locations",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -30,7 +30,7 @@
 					},
 					"response": [
 						{
-							"id": "09e8b767-c299-47b5-8a48-5195c52f4522",
+							"id": "d2fa1c9a-95b5-4f07-b974-a25499a4df13",
 							"name": "locations",
 							"originalRequest": {
 								"method": "GET",
@@ -53,6 +53,69 @@
 							"header": [],
 							"cookie": [],
 							"body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Kamarhati\",\n    \"type\": \"Regional Branch\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"-28.32555\",\n      \"lng\": \"-5.91531\"\n    }\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Otranto\",\n    \"type\": \"Local Office\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"-8.01254\",\n      \"lng\": \"101.47364\"\n    }\n  },\n  {\n    \"id\": 3,\n    \"name\": \"Millesimo\",\n    \"type\": \"Headquarter\",\n    \"status\": \"1\",\n    \"location\": {\n      \"lat\": \"78.88435\",\n      \"lng\": \"99.05294\"\n    }\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Retrieve location by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http:///locations/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"locations",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "b35480a2-9ff6-44a7-94f3-f50e65216753",
+							"name": "/locations/:id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http:///locations/:id",
+									"host": [
+										"http:"
+									],
+									"port": "",
+									"path": [
+										"",
+										"",
+										"locations",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"name\": \"Kamarhati\",\n  \"type\": \"Regional Branch\",\n  \"status\": \"1\",\n  \"location\": {\n    \"lat\": \"-28.32555\",\n    \"lng\": \"-5.91531\"\n  }\n}"
 						}
 					]
 				}
