@@ -3,7 +3,7 @@
 	"info": {
 		"_postman_id": "edb96410-8515-4e9c-a365-300a4a33e377",
 		"name": "Locations",
-		"description": "version=1.1 - This is a PetStore API description",
+		"description": "version=1.2 - This is a PetStore API description",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -30,7 +30,7 @@
 					},
 					"response": [
 						{
-							"id": "ce60f08e-c029-444d-b958-125e945d8459",
+							"id": "e364d066-1f36-4e31-8a99-17948cdf56f3",
 							"name": "locations",
 							"originalRequest": {
 								"method": "GET",
@@ -57,7 +57,7 @@
 					]
 				},
 				{
-					"name": "/locations/:id",
+					"name": "Retreive Location by id",
 					"event": [
 						{
 							"listen": "test",
@@ -98,36 +98,26 @@
 					},
 					"response": [
 						{
-							"id": "ca600012-e272-4a39-9294-b8b7b94401ab",
-							"name": "locations/:id",
+							"id": "b038e566-0e2a-4980-be99-51a53e557f0c",
+							"name": "Get Location id",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"body": {},
-								"url": {
-									"raw": "http:///locations/:id",
-									"host": [
-										"http:"
-									],
-									"port": "",
-									"path": [
-										"",
-										"",
-										"locations",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": ""
-										}
-									]
-								}
+								"url": "http:///locations/1"
 							},
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"header": [],
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text",
+									"name": "Content-Type"
+								}
+							],
 							"cookie": [],
 							"body": "{\n  \"id\": 1,\n  \"name\": \"Kamarhati\",\n  \"type\": \"Regional Branch\",\n  \"status\": \"1\",\n  \"location\": {\n    \"lat\": \"-28.32555\",\n    \"lng\": \"-5.91531\"\n  }\n}"
 						}
