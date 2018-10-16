@@ -3,7 +3,7 @@
 	"info": {
 		"_postman_id": "edb96410-8515-4e9c-a365-300a4a33e377",
 		"name": "Locations",
-		"description": "version=1.3 - This is a PetStore API description",
+		"description": "version=1.0 - Locations API description",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -12,7 +12,7 @@
 			"description": "Folder for locations",
 			"item": [
 				{
-					"name": "Retreive all locations",
+					"name": "Retreive all Locations",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -30,7 +30,7 @@
 					},
 					"response": [
 						{
-							"id": "e38ef82e-125d-46bd-9c66-0d6f66e62478",
+							"id": "17bf0f66-fddb-4259-9a44-7c61dfbca3ad",
 							"name": "locations",
 							"originalRequest": {
 								"method": "GET",
@@ -96,8 +96,8 @@
 					},
 					"response": [
 						{
-							"id": "eaec21e5-6dac-424b-9ae5-799e2b3c0ed6",
-							"name": "Get Location id",
+							"id": "1cc3e4c5-8f3a-411c-80a9-c95e6e1e7862",
+							"name": "Retreive Location ID",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -117,7 +117,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "1"
+											"value": ""
 										}
 									]
 								}
@@ -136,6 +136,125 @@
 							],
 							"cookie": [],
 							"body": "{\n  \"id\": 1,\n  \"name\": \"Kamarhati\",\n  \"type\": \"Regional Branch\",\n  \"status\": \"1\",\n  \"location\": {\n    \"lat\": \"-28.32555\",\n    \"lng\": \"-5.91531\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Retreive phone using Location ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http:////location/phone/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"",
+								"location",
+								"phone",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "4670755d-54e4-4356-a005-00c00f8592eb",
+							"name": "Retreive phone using Location ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http:////location/phone/:id",
+									"host": [
+										"http:"
+									],
+									"port": "",
+									"path": [
+										"",
+										"",
+										"",
+										"location",
+										"phone",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text",
+									"name": "Content-Type"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\" : 4,\n  \"operatingHour\" : \"8:00 AM - 5:00 PM\",\n  \"owner\" : \"XXX XXX\",\n  \"phone\" : \"345-678-9567\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create (add) a new Location",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 101,\n  \"name\": \"International Inc Canada\",\n  \"location\": {\n    \"lat\": 43.6532,\n    \"lng\": 79.3832\n  },\n  \"type\": \"Headquarter\",\n  \"status\": \"1\"\n}"
+						},
+						"url": "/locations"
+					},
+					"response": [
+						{
+							"id": "ebf0d580-531c-4e2d-a89a-7bf9344ecaba",
+							"name": "Create (add) a new Location",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 101,\n  \"name\": \"International Inc Canada\",\n  \"location\": {\n    \"lat\": 43.6532,\n    \"lng\": 79.3832\n  },\n  \"type\": \"Headquarter\",\n  \"status\": \"1\"\n}"
+								},
+								"url": "/locations"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": "Successfully created location."
 						}
 					]
 				}
