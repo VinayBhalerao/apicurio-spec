@@ -1,7 +1,8 @@
 {
+	"variables": [],
 	"info": {
+		"name": "Locations API",
 		"_postman_id": "edb96410-8515-4e9c-a365-300a4a33e377",
-		"name": "Locations",
 		"description": "version=1.0 - This is a Location API description",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
