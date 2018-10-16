@@ -3,7 +3,7 @@
 	"info": {
 		"_postman_id": "edb96410-8515-4e9c-a365-300a4a33e377",
 		"name": "Locations",
-		"description": "version=1.0 - This is a Location API description",
+		"description": "version=1.1 - This is a PetStore API description",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -30,7 +30,7 @@
 					},
 					"response": [
 						{
-							"id": "d2fa1c9a-95b5-4f07-b974-a25499a4df13",
+							"id": "ce60f08e-c029-444d-b958-125e945d8459",
 							"name": "locations",
 							"originalRequest": {
 								"method": "GET",
@@ -57,7 +57,21 @@
 					]
 				},
 				{
-					"name": "Retrieve location by id",
+					"name": "/locations/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d8122e6e-82fa-449a-8f4f-b23995424fe5",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var expectedId = globals[\"id\"]",
+									"tests [\"check id value\"] = jsonData.id == expectedId;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -84,8 +98,8 @@
 					},
 					"response": [
 						{
-							"id": "b35480a2-9ff6-44a7-94f3-f50e65216753",
-							"name": "/locations/:id",
+							"id": "ca600012-e272-4a39-9294-b8b7b94401ab",
+							"name": "locations/:id",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
